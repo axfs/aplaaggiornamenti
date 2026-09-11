@@ -1,6 +1,20 @@
-<h1>Gestionale APLA</h1>
-<p>File disponibili:</p>
-<ul>
-  <li><a href="AplaVersione.txt">File 1</a></li>
-  <li><a href="Apla9.exe">File 2</a></li>
-</ul>
+<!DOCTYPE html>
+<html>
+<head><title>Gestionale APLA</title></head>
+<body>
+  <h1>Gestionale</h1>
+  <div id="versione">Carico versione...</div>
+
+<script>
+fetch('./aplaversione.txt?v=' + Date.now())
+  .then(r => r.text())
+  .then(versione => {
+    document.getElementById('versione').innerText = "Versione: " + versione;
+  })
+  .catch(err => {
+    document.getElementById('versione').innerText = "Errore lettura file";
+  });
+</script>
+
+</body>
+</html>
